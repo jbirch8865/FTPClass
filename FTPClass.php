@@ -4,6 +4,8 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 class BadIniFile extends Exception {}
 class BadFTPLogin extends Exception {}
+class CannotDeleteFile extends Exception {}
+class ErrorUploadingFile extends Exception {}
 
 class FTP_Link {
 	private $FTP_connection;
@@ -51,6 +53,15 @@ class FTP_Link {
 		}
 	}
 
+	private function Delete_File($FileToDelete)
+	{
+		try {
+			return ftp_delete($this->FTP_connection,$FileToDelete);
+		} catch (Exception $e) {
+			throw new CannotDeleteFile("Error deleting file");
+		}
+	}
+
 	public function List_Files($Directory = '.')
 	{
 		try {
@@ -59,8 +70,19 @@ class FTP_Link {
 			throw new Exception("Error loading directory");
 		}
 	}
-}
 
-$FTP = new FTP_Link;
-print_r($FTP->List_Files());
+	public function Upload_Single_File($FileName,$Source_Location,$Target_Location)
+	{
+		try {
+			@$this->Delete_File($Target_Location.'/'.$FileName);
+		} catch (CannotDeleteFile $e) {
+
+		}
+		try {
+			ftp_put($this->FTP_connection,$Target_Location.'/'.$FileName,$Source_Location.'/'.$FileName, FTP_ASCII);
+		} catch (Exception $e) {
+			throw new ErrorUploadingFile("There was an error uploding this file");
+		}
+	}
+}
 ?>

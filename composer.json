@@ -1,0 +1,13 @@
+{
+    "name": "jbirch8865/ftpclass",
+    "description": "This is a class for working with the FTP server in the dayspring environment",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Joel Birch",
+            "email": "jbirch88655@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
