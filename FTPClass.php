@@ -54,7 +54,7 @@ class FTP_Link {
 	public function List_Files($Directory = '.')
 	{
 		try {
-			return ftp_nlist($this->FTP_Connection,$Directory);
+			return ftp_nlist($this->FTP_connection,$Directory);
 		} catch (Exception $e) {
 			throw new Exception("Error loading directory");
 		}
