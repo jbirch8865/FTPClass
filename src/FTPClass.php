@@ -1,8 +1,8 @@
 <?php
 namespace ftpclass;
 
-ini_set('upload_max_filesize', 500M);
-ini_set('post_max_size',500M);
+ini_set('upload_max_filesize','500M');
+ini_set('post_max_size','500M');
 
 class BadIniFile extends Exception {}
 class BadFTPLogin extends Exception {}
