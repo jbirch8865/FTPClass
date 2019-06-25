@@ -1,9 +1,9 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+namespace ftpclass;
+
 ini_set('upload_max_filesize', 500M);
 ini_set('post_max_size',500M);
-error_reporting(E_ALL);
+
 class BadIniFile extends Exception {}
 class BadFTPLogin extends Exception {}
 class CannotDeleteFile extends Exception {}

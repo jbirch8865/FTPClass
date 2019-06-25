@@ -8,6 +8,11 @@
             "email": "jbirch88655@gmail.com"
         }
     ],
+    "autoload": {
+      "psr-4": {
+        "ftpclass\\": "src" 
+      }
+    }
     "minimum-stability": "dev",
     "require": {}
 }
