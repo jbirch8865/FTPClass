@@ -4,10 +4,10 @@ namespace ftpclass;
 ini_set('upload_max_filesize','500M');
 ini_set('post_max_size','500M');
 
-class BadIniFile extends Exception {}
-class BadFTPLogin extends Exception {}
-class CannotDeleteFile extends Exception {}
-class ErrorUploadingFile extends Exception {}
+class BadIniFile extends \Exception {}
+class BadFTPLogin extends \Exception {}
+class CannotDeleteFile extends \Exception {}
+class ErrorUploadingFile extends \Exception {}
 
 class FTP_Link {
 	private $FTP_connection;
@@ -69,7 +69,7 @@ class FTP_Link {
 		try {
 			return ftp_nlist($this->FTP_connection,$Directory);
 		} catch (Exception $e) {
-			throw new Exception("Error loading directory");
+			throw new \Exception("Error loading directory");
 		}
 	}
 
